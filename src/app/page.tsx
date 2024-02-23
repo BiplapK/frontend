@@ -14,6 +14,7 @@ const Home = async () => {
     <div className="bg-red-100 h-screen">
       <h2 className="text-4xl">Lorem, ipsum dolor.</h2>
       <ProfileComp />
+      <h2>Hello Nabraj</h2>
     </div>
   );
 };
