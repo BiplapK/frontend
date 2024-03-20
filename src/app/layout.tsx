@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
+import { Raleway, Poppins } from 'next/font/google';
+
 import '../styles/style.scss';
 import DataProvider from '@/providers/DataProvider';
 import AuthProvider from '@/providers/AuthProvider';
-import { Raleway, Poppins } from 'next/font/google';
 import ToastProvider from '@/providers/ToastProvider';
 import { getProfileData } from '@/modules/Admin/services/profile';
+import Header from '@/modules/core/components/Header';
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -34,13 +36,17 @@ const RootLayout = async ({
   children: React.ReactNode;
 }>) => {
   const profileData = await getProfileData();
+  console.log('🚀 ~ profileData:', profileData);
 
   return (
     <html lang="en" className={`${raleway.variable} ${poppins.variable} dark`}>
       <body>
-        <AuthProvider data={profileData}>
+        <AuthProvider data={profileData || {}}>
           <ToastProvider />
-          <DataProvider>{children}</DataProvider>
+          <DataProvider>
+            <Header />
+            {children}
+          </DataProvider>
         </AuthProvider>
       </body>
     </html>

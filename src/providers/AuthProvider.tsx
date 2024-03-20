@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, ReactNode } from 'react';
+
 import { ProfileDataType } from '@/modules/Admin/types/profile.types';
 
 type AuthProviderProps = {
@@ -13,6 +14,9 @@ export const AuthContext = createContext<{ data: ProfileDataType | null }>({
 });
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children, data }) => {
+  const [isAuth, setIsAuth] = React.useState(false);
+
+  React.useEffect(() => {}, []);
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };
 

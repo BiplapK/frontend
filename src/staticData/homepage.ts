@@ -1,0 +1,33 @@
+export const aimdData = [
+  {
+    id: 1,
+    title: 'We Find & Fund',
+    description:
+      'We are in search of opportunities to help as many youth as possible. We approach and fund all those who are in need.',
+  },
+  {
+    id: 2,
+    title: 'We Provide Care',
+    description:
+      ' Today’s youth need a helpful hand and right guidance at every stage. Here’s where we take care of them like our own.',
+  },
+  {
+    id: 3,
+    title: 'We Educate',
+    description:
+      'We run small-scale schools for the underprivileged children and youth of daily wage workers for a better future.',
+  },
+  {
+    id: 4,
+    title: 'We Employ',
+    description:
+      'We run organizations where we employ youngsters so they can live their dreams for themselves and their families. ',
+  },
+];
+
+export const counterData = [
+  { id: 1, count: 1000, title: 'Members Worldwide' },
+  { id: 2, count: 950000, title: 'Children Helped' },
+  { id: 3, count: 3000000, title: 'Funds Raised' },
+  { id: 4, count: 60000, title: 'Food Provided' },
+];

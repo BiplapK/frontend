@@ -1,5 +1,6 @@
-import clsx from 'clsx';
 import React from 'react';
+
+import clsx from 'clsx';
 
 type ButtonProps = {
   children: React.ReactNode;
@@ -9,14 +10,12 @@ type ButtonProps = {
   variant:
     | 'danger'
     | 'danger-outline'
-    | 'success'
-    | 'success-outline'
+    | 'normal'
+    | 'normal-outline'
     | 'warning'
     | 'warning-outline'
     | 'black'
-    | 'black-outline'
-    | 'primary'
-    | 'primary-outline';
+    | 'black-outline';
   onClick?: () => void;
   type?: 'submit' | 'reset' | 'button';
 };
@@ -25,7 +24,7 @@ const Button = ({
   children,
   className,
   rounded = 'sm',
-  variant = 'success',
+  variant = 'normal',
   size = 'md',
   type = 'submit',
   onClick,
@@ -44,31 +43,29 @@ const Button = ({
         rounded === 'md' ? 'rounded-md' : null,
         rounded === 'sm' ? 'rounded-sm' : null,
         rounded === 'none' ? 'rounded-none' : null,
-        variant === 'danger' ? 'bg-red-600 hover:bg-red-500 text-white' : null,
+        variant === 'danger'
+          ? 'bg-danger-100 hover:bg-danger-200 text-white'
+          : null,
         variant === 'danger-outline'
-          ? ' border-2 border-red-600 hover:bg-red-600 text-red-600 hover:text-white'
+          ? ' border-2 border-danger-100 hover:bg-danger-100 text-danger-100 hover:text-white-100'
           : null,
-        variant === 'success'
-          ? 'bg-green-600 hover:bg-green-500 text-white'
+        variant === 'normal'
+          ? 'bg-white-300 hover:bg-orange-100 text-white'
           : null,
-        variant === 'success-outline'
-          ? ' border-2 border-green-600 hover:bg-green-600 text-green-600 hover:text-white'
+        variant === 'normal-outline'
+          ? ' border-2 border-white-300 hover:bg-orange-100 text-orange-100 hover:text-white-300'
           : null,
         variant === 'warning'
-          ? 'bg-yellow-600 hover:bg-yellow-500 text-white'
+          ? 'bg-orange-100 hover:bg-orange-200 text-white'
           : null,
         variant === 'warning-outline'
-          ? ' border-2 border-yellow-600 hover:bg-yellow-600 text-yellow-600 hover:text-white'
+          ? ' border-2 border-orange-100 hover:bg-orange-100 text-orange-100 hover:text-white-100'
           : null,
-        variant === 'black' ? 'bg-black hover:bg-black text-white' : null,
+        variant === 'black'
+          ? 'bg-black-100 hover:bg-black-100 text-white-100'
+          : null,
         variant === 'black-outline'
-          ? ' border-2 border-black hover:bg-black text-black hover:text-white'
-          : null,
-        variant === 'primary'
-          ? 'bg-blue-600 hover:bg-blue-500 text-white'
-          : null,
-        variant === 'primary-outline'
-          ? ' border-2 border-blue-500 hover:bg-blue-500 text-blue-600 hover:text-white'
+          ? ' border-2 border-black-100 hover:bg-black-200 text-black-100 hover:text-white-100'
           : null,
         className
       )}

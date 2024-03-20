@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react';
+
 import AdminTemplate from '@/modules/Admin/components/AdminLayout';
 
 const adminNavgation = [

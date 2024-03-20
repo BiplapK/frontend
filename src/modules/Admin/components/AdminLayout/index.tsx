@@ -1,12 +1,15 @@
 'use client';
+import React from 'react';
+
+import Link from 'next/link';
 import clsx from 'clsx';
 import Image from 'next/image';
-import React from 'react';
+import { useRouter, usePathname } from 'next/navigation';
+
+import { deleteCookie } from '@/modules/core/utils/cookies';
+
 import { ProfileDataType } from '../../types/profile.types';
 import useProfile from '../../hooks/useProfile';
-import { deleteCookie } from '@/modules/core/utils/cookies';
-import { useRouter, usePathname } from 'next/navigation';
-import Link from 'next/link';
 
 type NavDatatype = {
   title: string;
