@@ -2,6 +2,8 @@ import React from 'react';
 import { getProfileData } from '@/modules/Admin/services/profile';
 import ProfileComp from '@/modules/core/components/ProfileComp';
 import { getProductData } from '@/modules/core/services/getProduct';
+import Aim from '@/modules/core/components/Aim';
+import Counter from '@/modules/core/components/Counter';
 
 const Home = async () => {
   // const data = await getProductData();
@@ -13,8 +15,10 @@ const Home = async () => {
   return (
     <div className="bg-red-100 h-screen">
       <h2 className="text-4xl text-orange bg-light">Lorem, ipsum dolor.</h2>
-      <ProfileComp />
-      <h2>Hello Nabraj</h2>
+      {/* <ProfileComp />
+      <h2>Hello Nabraj</h2> */}
+      <Aim />
+      <Counter />
     </div>
   );
 };

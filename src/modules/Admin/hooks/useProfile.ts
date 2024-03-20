@@ -1,6 +1,7 @@
 'use client';
-import { AuthContext } from '@/providers/AuthProvider';
 import React from 'react';
+
+import { AuthContext } from '@/providers/AuthProvider';
 
 const useProfile = () => React.useContext(AuthContext);
 

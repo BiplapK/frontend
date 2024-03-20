@@ -7,7 +7,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 
-import { setCookie } from '@/modules/core/utils/cookies';
+import { getCookie, setCookie } from '@/modules/core/utils/cookies';
 import Button from '@/modules/core/components/Button';
 import Input from '@/modules/core/components/Input';
 
@@ -38,7 +38,7 @@ const Login = (props: Props) => {
         .then((res) => {
           setCookie('admin-key', res && res.data.token, 30);
           toast.success(res.data.message);
-          router.push('/admin/nabraj');
+          router.push('/');
           resetForm();
         })
         .catch((error) => {
@@ -46,10 +46,11 @@ const Login = (props: Props) => {
         });
     },
   });
+
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 h-[75vh]"
     >
       <Input
         name="email"
@@ -69,12 +70,20 @@ const Login = (props: Props) => {
       />
       <div className="flex items-center justify-between">
         <Button
-          size="xl"
+          size="md"
           rounded="md"
-          variant="primary"
-          className="font-medium"
+          variant="warning"
+          className="font-medium text-white-200"
         >
           Sign In
+        </Button>
+        <Button
+          variant="danger"
+          rounded="full"
+          size="sm"
+          className="text-white-100"
+        >
+          Hello Manish
         </Button>
         <Link
           className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
