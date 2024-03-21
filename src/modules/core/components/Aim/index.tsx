@@ -1,8 +1,10 @@
 import React from 'react';
 
 import Link from 'next/link';
-import { aimdData } from '@/staticData/homepage';
 import clsx from 'clsx';
+
+import { aimdData } from '@/staticData/homepage';
+
 import Button from '../Button';
 
 type Props = {};
@@ -30,7 +32,7 @@ const Aim = (props: Props) => {
         </div>
       </div>
       <div className="py-4">
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-2 md:grid-cols-4">
           {aimdData.map((item) => (
             <div
               key={item.id}

@@ -7,6 +7,7 @@ import AuthProvider from '@/providers/AuthProvider';
 import ToastProvider from '@/providers/ToastProvider';
 import { getProfileData } from '@/modules/Admin/services/profile';
 import Header from '@/modules/core/components/Header';
+import Footer from '@/modules/core/components/Footer';
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +47,7 @@ const RootLayout = async ({
           <DataProvider>
             <Header />
             {children}
+            {/* <Footer /> */}
           </DataProvider>
         </AuthProvider>
       </body>

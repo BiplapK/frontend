@@ -12,3 +12,14 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+//this is the css for react swiper 
+
+.swiper{
+  .swiper-wrapper{
+    .swiper-slide{
+      display: flex;
+    }
+  }
+}
