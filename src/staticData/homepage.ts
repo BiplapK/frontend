@@ -31,3 +31,16 @@ export const counterData = [
   { id: 3, count: 3000000, title: 'Funds Raised' },
   { id: 4, count: 60000, title: 'Food Provided' },
 ];
+
+export const sliderImageOne = [
+  { id: 1, imageUrl: '/sliders-images/gallery-img-05-free-img.jpg' },
+  { id: 2, imageUrl: '/sliders-images/gallery-img-07-free-img.jpg' },
+  { id: 3, imageUrl: '/sliders-images/home-image-08.jpg' },
+  { id: 4, imageUrl: '/sliders-images/home-image-06.jpg' },
+  { id: 5, imageUrl: '/sliders-images/home-image-07.jpg' },
+  { id: 6, imageUrl: '/sliders-images/home-image-08.jpg' },
+  { id: 7, imageUrl: '/sliders-images/home-image-08.jpg' },
+  { id: 8, imageUrl: '/sliders-images/home-image-06.jpg' },
+  { id: 9, imageUrl: '/sliders-images/home-image-07.jpg' },
+  { id: 10, imageUrl: '/sliders-images/home-image-08.jpg' },
+];
