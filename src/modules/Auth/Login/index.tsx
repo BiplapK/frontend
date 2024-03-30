@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import { getCookie, setCookie } from '@/modules/core/utils/cookies';
 import Button from '@/modules/core/components/Button';
 import Input from '@/modules/core/components/Input';
+import profileRevalidate from '@/modules/core/components/Header/action';
 
 import { login } from './services/auth';
 
@@ -39,6 +40,7 @@ const Login = (props: Props) => {
           setCookie('admin-key', res && res.data.token, 30);
           setCookie('role', res && res.data.role, 30);
           toast.success(res.data.message);
+          profileRevalidate();
           router.push('/');
           resetForm();
         })
