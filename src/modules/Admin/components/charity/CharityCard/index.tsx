@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 
 import Button from '@/modules/core/components/Button';
-import Link from 'next/link';
 
 type Props = {
   title: string;
@@ -62,7 +62,7 @@ const CharityCard = ({
             // onClick={() => handleEditCharity(charity_id)}
             size="sm"
             className="text-white-100"
-            variant="danger"
+            variant="primary"
           >
             <Link href={`/admin/charity/${charity_id}`}> Edit</Link>
           </Button>
@@ -70,7 +70,7 @@ const CharityCard = ({
             onClick={() => handleDeleteCharity(charity_id)}
             size="sm"
             className="text-white-100"
-            variant="warning"
+            variant="danger"
           >
             Delete
           </Button>

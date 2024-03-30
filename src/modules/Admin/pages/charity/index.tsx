@@ -26,16 +26,10 @@ const Charity = ({ data }: Props) => {
       .catch((error) => toast.error(error.response.data.message));
   };
 
-  const editCharity = (charity_id: string) => {
-    console.log('🚀 ~ editCharity ~ charity_id:', charity_id);
-    const filteredData = data.filter((item) => charity_id === item.charity_id);
-    console.log('🚀 ~ editCharity ~ filteredData:', filteredData);
-  };
-
   return (
     <div className="p-2">
       <div className="w-full flex justify-end">
-        <Button variant="normal">
+        <Button variant="primary" className="text-white-100">
           <Link href={'/admin/charity/add-charity'}>Add New Charity</Link>
         </Button>
       </div>
@@ -51,7 +45,6 @@ const Charity = ({ data }: Props) => {
             image_url={item.image_url}
             title={item.title}
             handleDeleteCharity={deleteCharity}
-            handleEditCharity={editCharity}
           />
         ))}
       </div>

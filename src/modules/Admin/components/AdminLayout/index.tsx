@@ -62,7 +62,7 @@ const AdminTemplate = ({
                 href={`${item.path}`}
                 className={clsx(
                   'flex items-center px-4 py-2 text-black-100 font-semibold hover:text-black-300 border-b-[1px]  border-orange-200',
-                  pathname === item.path
+                  pathname.includes(item.path)
                     ? 'text-orange-100 hover:text-orange-200'
                     : null
                 )}

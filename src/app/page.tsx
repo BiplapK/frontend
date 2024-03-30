@@ -13,7 +13,7 @@ import Button from '@/modules/core/components/Button';
 
 const Home = async () => {
   return (
-    <div className="bg-red-100 ">
+    <div className="">
       <h2 className="text-4xl text-orange bg-light">Lorem, ipsum dolor.</h2>
       {/* <ProfileComp />
       <h2>Hello Nabraj</h2> */}

@@ -95,7 +95,7 @@ const Header = (props: Props) => {
               {!Boolean(data) ? (
                 <>
                   <Button
-                    variant="warning-outline"
+                    variant="success-outline"
                     rounded="full"
                     size="sm"
                     className="font-bold font-raleway"
@@ -104,11 +104,11 @@ const Header = (props: Props) => {
                     Login In
                   </Button>
                   <Button
-                    variant="warning-outline"
+                    variant="primary-outline"
                     rounded="full"
                     size="sm"
                     className="font-bold font-raleway"
-                    onClick={() => router.push('/signup')}
+                    onClick={() => router.push('/create-account')}
                   >
                     Sign Up
                   </Button>
