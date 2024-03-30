@@ -13,15 +13,15 @@ const Input = ({ name, type = 'text', error, ref, ...rest }: InputProps) => {
   return (
     <div className="mb-4">
       <label
-        className="block  text-black-100 text-sm font-bold mb-2 capitalize"
+        className="block  text-black-200 text-md font-medium mb-2 capitalize"
         htmlFor={name}
       >
         {name}
       </label>
       <input
         className={clsx(
-          'shadow appearance-none border rounded w-full py-2 px-3 text-black-100 leading-tight focus:outline-none focus:shadow-outline',
-          error ? 'border-red-500' : null
+          '  border border-black-400 bg-white-400 rounded w-full py-3 px-3 text-black-100 leading-tight focus:ring-white-400 focus:border-white-400 focus:outline-black-400',
+          error ? 'border-red-200' : null
         )}
         id={name}
         type={type}
@@ -29,9 +29,15 @@ const Input = ({ name, type = 'text', error, ref, ...rest }: InputProps) => {
         ref={ref}
         {...rest}
       />
-      {error && (
-        <p className="text-danger-100 text-xs p-1 italic capitalize">{error}</p>
-      )}
+      {error && <p className="text-red-200 text-md p-1 italic">{error}</p>}
+
+      {/* <input
+        type="text"
+        id="first_name"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="John"
+        required
+      /> */}
     </div>
   );
 };

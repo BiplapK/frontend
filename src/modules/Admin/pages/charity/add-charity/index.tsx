@@ -21,11 +21,8 @@ type Props = {
 };
 
 const AddCharity = ({ data, edit = false, id }: Props) => {
-  console.log('🚀 ~ AddCharity ~ data:', data);
-  console.log('🚀 ~ AddCharity ~ edit:', edit);
   const router = useRouter();
   const handleFileUpload = async (data: any) => {
-    console.log(data, 'dd');
     formik.setFieldValue('image_url', data);
   };
 
@@ -74,7 +71,7 @@ const AddCharity = ({ data, edit = false, id }: Props) => {
   return (
     <div className="p-2">
       <div className="w-full flex justify-end">
-        <Button variant="normal">
+        <Button variant="danger" className="text-white-100">
           <Link href={'/admin/charity'}>Go Back to Charity page</Link>
         </Button>
       </div>
@@ -119,8 +116,8 @@ const AddCharity = ({ data, edit = false, id }: Props) => {
             />
           </div>
           <div className="flex justify-start">
-            <Button variant="warning" type="submit">
-              Create Chariyt
+            <Button variant="success" type="submit" className="text-white-100">
+              {edit ? 'Update Charity' : 'Create Charity'}
             </Button>
           </div>
         </form>

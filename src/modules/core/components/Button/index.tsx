@@ -15,7 +15,11 @@ type ButtonProps = {
     | 'warning'
     | 'warning-outline'
     | 'black'
-    | 'black-outline';
+    | 'black-outline'
+    | 'success'
+    | 'success-outline'
+    | 'primary'
+    | 'primary-outline';
   onClick?: () => void;
   type?: 'submit' | 'reset' | 'button';
 };
@@ -43,14 +47,24 @@ const Button = ({
         rounded === 'md' ? 'rounded-md' : null,
         rounded === 'sm' ? 'rounded-sm' : null,
         rounded === 'none' ? 'rounded-none' : null,
-        variant === 'danger'
-          ? 'bg-danger-100 hover:bg-danger-200 text-white'
-          : null,
+        variant === 'danger' ? 'bg-red-100 hover:bg-red-200 text-white' : null,
         variant === 'danger-outline'
-          ? ' border-2 border-danger-100 hover:bg-danger-100 text-danger-100 hover:text-white-100'
+          ? ' border-2 border-red-200 hover:bg-red-200 text-red-200 hover:text-white-100'
+          : null,
+        variant === 'success'
+          ? 'bg-green-200 hover:bg-green-300 text-white'
+          : null,
+        variant === 'success-outline'
+          ? ' border-2 border-green-200 hover:bg-green-300 text-green-300 hover:text-white-100'
+          : null,
+        variant === 'primary'
+          ? 'bg-blue-200 hover:bg-blue-300 text-white'
+          : null,
+        variant === 'primary-outline'
+          ? ' border-2 border-blue-200 hover:bg-blue-300 text-blue-300 hover:text-white-100'
           : null,
         variant === 'normal'
-          ? 'bg-white-300 hover:bg-orange-100 text-white'
+          ? 'bg-white-300 hover:bg-blue-200 text-white'
           : null,
         variant === 'normal-outline'
           ? ' border-2 border-white-300 hover:bg-orange-100 text-orange-100 hover:text-white-300'

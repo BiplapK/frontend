@@ -17,7 +17,7 @@ const LayoutProvider = ({ children }: Props) => {
     '/admin/:path*',
     '/login',
     '/signup',
-    '/forget-password',
+    '/create-account',
   ];
 
   const commonLayout = routes.some((route) => pathName.startsWith(route));

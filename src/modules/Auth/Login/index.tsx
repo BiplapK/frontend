@@ -53,7 +53,7 @@ const Login = (props: Props) => {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 h-[75vh]"
+      className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
     >
       <Input
         name="email"
@@ -75,24 +75,16 @@ const Login = (props: Props) => {
         <Button
           size="md"
           rounded="md"
-          variant="warning"
+          variant="success"
           className="font-medium text-white-200"
         >
-          Sign In
-        </Button>
-        <Button
-          variant="danger"
-          rounded="full"
-          size="sm"
-          className="text-white-100"
-        >
-          Hello Manish
+          Log In
         </Button>
         <Link
           className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-          href="/forget-password"
+          href="/create-account"
         >
-          Forgot Password?
+          Create Account
         </Link>
       </div>
     </form>
