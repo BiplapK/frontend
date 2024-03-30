@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-import { getCookie } from './cookies';
 import { NEXT_PUBLIC_API_URL } from '@/constants/env.constant';
+
+import { getCookie } from './cookies';
 
 const createAxiosInstance = (baseURL: string | undefined) =>
   axios.create({ baseURL });

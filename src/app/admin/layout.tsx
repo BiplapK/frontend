@@ -9,6 +9,16 @@ const adminNavgation = [
     parent: 'admin',
   },
   {
+    title: 'Charity',
+    path: '/admin/charity',
+    parent: 'admin',
+  },
+  {
+    title: 'Contact',
+    path: '/admin/contact',
+    parent: 'admin',
+  },
+  {
     title: 'Notice',
     path: '/admin/notice',
     parent: 'admin',

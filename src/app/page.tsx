@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { getProfileData } from '@/modules/Admin/services/profile';
-import ProfileComp from '@/modules/core/components/ProfileComp';
 import { getProductData } from '@/modules/core/services/getProduct';
 import Aim from '@/modules/core/components/Aim';
 import Counter from '@/modules/core/components/Counter';
@@ -13,14 +12,8 @@ import BackgroundBanner from '@/modules/core/components/BackgroundBanner';
 import Button from '@/modules/core/components/Button';
 
 const Home = async () => {
-  // const data = await getProductData();
-  // console.log(data, "@@data");
-  // // const getData = await data();
-  // const profileData = await getProfileData();
-  // console.log("🚀 ~ Home ~ profileData:", profileData);
-
   return (
-    <div className="bg-red-100 h-screen">
+    <div className="bg-red-100 ">
       <h2 className="text-4xl text-orange bg-light">Lorem, ipsum dolor.</h2>
       {/* <ProfileComp />
       <h2>Hello Nabraj</h2> */}
@@ -29,7 +22,7 @@ const Home = async () => {
       <Counter />
       <Slider data={sliderImageOne} />
       <Banner />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

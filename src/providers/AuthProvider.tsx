@@ -14,10 +14,9 @@ export const AuthContext = createContext<{ data: ProfileDataType | null }>({
 });
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children, data }) => {
-  const [isAuth, setIsAuth] = React.useState(false);
-
-  React.useEffect(() => {}, []);
-  return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={data || {}}>{children}</AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;
