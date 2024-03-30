@@ -8,6 +8,6 @@ export type CharityType = {
   description: string;
   image_url: string;
   donation_count: string | null;
-  charity_amount: string | null;
+  charity_amount: string;
   collected_amount: string | null;
 };

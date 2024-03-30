@@ -9,12 +9,20 @@ import { useRouter } from 'next/navigation';
 
 import Button from '@/modules/core/components/Button';
 import Input from '@/modules/core/components/Input';
-import { addCharity } from '@/modules/Admin/services/charity';
+import { addCharity, updateCharity } from '@/modules/Admin/services/charity';
 import charityRevalidate from '@/modules/Admin/components/charity/CharityCard/action';
+import { CharityType } from '@/modules/Admin/types/charity.types';
+import { publicAxios } from '@/modules/core/utils/axios';
 
-type Props = {};
+type Props = {
+  data?: CharityType;
+  edit?: boolean;
+  id?: string;
+};
 
-const AddCharity = (props: Props) => {
+const AddCharity = ({ data, edit = false, id }: Props) => {
+  console.log('🚀 ~ AddCharity ~ data:', data);
+  console.log('🚀 ~ AddCharity ~ edit:', edit);
   const router = useRouter();
   const handleFileUpload = async (data: any) => {
     console.log(data, 'dd');
@@ -32,23 +40,35 @@ const AddCharity = (props: Props) => {
 
   const formik = useFormik({
     initialValues: {
-      title: '',
-      description: '',
-      image_url: null,
-      charity_amount: '',
+      title: edit ? data && data.title : '',
+      description: edit ? data && data.description : '',
+      image_url: edit ? data && data.image_url : null,
+      charity_amount: edit ? data && data.charity_amount : '',
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      addCharity(values)
-        .then((res) => {
-          toast.success(res.data.message);
-          charityRevalidate();
-          router.push('/admin/charity');
-          resetForm();
-        })
-        .catch((error) => {
-          toast.error(error.response.data.message);
-        });
+      Boolean(edit)
+        ? publicAxios
+            .put(`/charity/update/${id}`, values)
+            .then((res) => {
+              toast.success(res.data.message);
+              charityRevalidate();
+              router.push('/admin/charity');
+              resetForm();
+            })
+            .catch((error) => {
+              toast.error(error.response.data.message);
+            })
+        : addCharity(values)
+            .then((res) => {
+              toast.success(res.data.message);
+              charityRevalidate();
+              router.push('/admin/charity');
+              resetForm();
+            })
+            .catch((error) => {
+              toast.error(error.response.data.message);
+            });
     },
   });
   return (
@@ -77,16 +97,18 @@ const AddCharity = (props: Props) => {
               error={formik.errors.description}
               onBlur={formik.handleBlur}
             />
-            <Input
-              name="image_url"
-              type="file"
-              accept=".png,.jpg,.jpeg"
-              //   value={formik.values.image_url}
-              ref={fileRef}
-              onChange={(e) => handleFileUpload(e.target.files?.[0])}
-              error={formik.errors.image_url}
-              //   onBlur={formik.handleBlur}
-            />
+            {!edit && (
+              <Input
+                name="image_url"
+                type="file"
+                accept=".png,.jpg,.jpeg"
+                //   value={formik.values.image_url}
+                ref={fileRef}
+                onChange={(e) => handleFileUpload(e.target.files?.[0])}
+                error={formik.errors.image_url}
+                //   onBlur={formik.handleBlur}
+              />
+            )}
             <Input
               name="charity_amount"
               type="text"
