@@ -37,6 +37,7 @@ const Login = (props: Props) => {
       login(values)
         .then((res) => {
           setCookie('admin-key', res && res.data.token, 30);
+          setCookie('role', res && res.data.role, 30);
           toast.success(res.data.message);
           router.push('/');
           resetForm();

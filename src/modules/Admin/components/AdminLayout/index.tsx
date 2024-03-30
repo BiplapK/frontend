@@ -8,7 +8,6 @@ import { useRouter, usePathname } from 'next/navigation';
 
 import { deleteCookie } from '@/modules/core/utils/cookies';
 
-import { ProfileDataType } from '../../types/profile.types';
 import useProfile from '../../hooks/useProfile';
 
 type NavDatatype = {
@@ -26,26 +25,34 @@ const AdminTemplate = ({
   const { data } = useProfile();
 
   const [showSidebar, setShowSidebar] = React.useState<boolean>(true);
-  const [showProfile, setShowProfile] = React.useState<boolean>(false);
   const router = useRouter();
   const pathname = usePathname();
-  // console.log("🚀 ~ pathname:", pathname);
 
   const handleLogout = () => {
     deleteCookie('admin-key');
+    deleteCookie('role');
     router.refresh();
     router.push('/');
   };
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="flex h-screen bg-white-100">
       <div
         className={clsx(
-          'hidden flex-col w-64 bg-gray-800',
+          'hidden flex-col w-64  border-r-[1px] border-black-200',
           showSidebar ? 'md:flex' : 'md:hidden'
         )}
       >
-        <div className="flex items-center justify-center h-16 bg-gray-900">
-          <span className="text-white font-bold uppercase">Sidebar</span>
+        <div className="flex items-center justify-center h-18 p-2">
+          {/* <span className="text-white font-bold uppercase">Sidebar</span> */}
+          <div className="p-1 h-[60px] w-[160px] overflow-hidden">
+            <Image
+              alt="logo-img"
+              src="/logo-regular-free-img.png"
+              height={80}
+              width={180}
+              quality={100}
+            />
+          </div>
         </div>
         <div className="flex flex-col flex-1 overflow-y-auto">
           <nav className="flex-1 px-2 py-4 bg-gray-800">
@@ -53,85 +60,16 @@ const AdminTemplate = ({
               <Link
                 key={item.path}
                 href={`${item.path}`}
-                className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700"
+                className={clsx(
+                  'flex items-center px-4 py-2 text-black-100 font-semibold hover:text-black-300 border-b-[1px]  border-orange-200',
+                  pathname === item.path
+                    ? 'text-orange-100 hover:text-orange-200'
+                    : null
+                )}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
                 {item.title}
               </Link>
             ))}
-            {/* <Link
-              href="/"
-              className="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-              Dashboard
-            </Link>
-            <Link
-              href="/notice"
-              className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-              Notices
-            </Link>
-            <Link
-              href="/"
-              className="flex items-center px-4 py-2 mt-2 text-gray-100 hover:bg-gray-700"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-              Settings
-            </Link> */}
           </nav>
         </div>
       </div>
@@ -151,9 +89,9 @@ const AdminTemplate = ({
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 />
               </svg>
@@ -161,76 +99,18 @@ const AdminTemplate = ({
           </div>
           <div className="flex items-center pr-12">
             {/* <button className="flex items-center text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700"> */}
-            <div className="flex items-center pr-10">
+            <div className="flex items-center pr-5">
               <div className="flex items-center ms-3">
-                <div>
-                  <button
-                    type="button"
-                    className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                    //   aria-expanded="false"
-                    //   data-dropdown-toggle="dropdown-user"
-                    onClick={() => setShowProfile((prev) => !prev)}
-                  >
-                    <span className="sr-only">Open user menu</span>
-                    {/* <img
-                        className="w-8 h-8 rounded-full"
-                        src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                        alt="user-photo"
-                      /> */}
-                    <Image
-                      src={''}
-                      alt="no-image"
-                      className="w-8 h-8 rounded-full"
-                    />
-                  </button>
-                </div>
-                <div
-                  className={clsx(
-                    ' absolute top-12 right-2 bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600',
-                    showProfile ? 'block' : 'hidden'
-                  )}
-                  // id="dropdown-user"
-                >
-                  <div className="px-4 py-3" role="none">
-                    {}
-                    <p
-                      className="text-sm text-gray-900 dark:text-white"
-                      role="none"
-                    >
-                      {data && data?.full_name}
-                    </p>
-                  </div>
-                  <ul className="py-1" role="none">
+                <div className="flex items-center justify-between">
+                  <ul className="flex">
                     <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Dashboard
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Settings
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
-                        role="menuitem"
-                      >
-                        Earnings
-                      </a>
+                      <div className="block px-4 py-2 cursor-pointer text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white">
+                        {data?.username}
+                      </div>
                     </li>
                     <li>
                       <div
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                        className="block px-4 py-2 cursor-pointer text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                         onClick={handleLogout}
                       >
                         Sign out
@@ -244,10 +124,10 @@ const AdminTemplate = ({
           </div>
         </div>
         <div className="p-4">
-          <h1 className="text-2xl font-bold">Welcome to my dashboard!</h1>
+          {/* <h1 className="text-2xl font-bold">Welcome to my dashboard!</h1>
           <p className="mt-2 text-gray-600">
             This is an example dashboard using Tailwind CSS.
-          </p>
+          </p> */}
           {children}
         </div>
       </div>

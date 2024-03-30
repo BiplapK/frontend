@@ -1,56 +1,52 @@
 import { NextResponse, NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const response = NextResponse;
+  const { pathname } = request.nextUrl;
 
-  // Define paths
-  const adminPaths = ['/admin', '/admin/*'];
-  const loginPath = '/login';
-  const defaultRedirectPath = '/'; // Adjust this to your default redirect path
+  const authToken = request.cookies.get('admin-key')?.value;
+  const roleType = request.cookies.get('role')?.value;
 
-  try {
-    const url = request.nextUrl.clone();
+  const isAdminPath = adminPaths.some((route) => pathname.startsWith(route));
+  const isLoginPath = loginPaths.some((route) => pathname.startsWith(route));
 
-    const urlPath = url.pathname.split('/').filter((x: any) => x !== '');
-
-    const isLoggedIn = !!request.cookies.get('admin-key'); // Use double negation to convert to boolean
-
-    // If the requested path is the login page, allow access
-    if (url.pathname === loginPath) {
-      return response.next();
-    }
-
-    // If user is logged in and trying to access admin paths, allow access
-    if (isLoggedIn && adminPaths.includes(url.pathname)) {
-      return response.next();
-    }
-
-    // If user is not logged in, redirect to login page
-    if (
-      (!isLoggedIn && adminPaths.includes(url.pathname)) ||
-      adminPaths.some((path) => url.pathname.startsWith(path))
-    ) {
-      return response.redirect(new URL(loginPath, request.url));
-    }
-
-    // // For any other case, redirect to the default path
-    // url.pathname = defaultRedirectPath;
-    // return response.redirect(url);
-  } catch (error) {
-    console.error(error); // Use console.error for better visibility of errors
-    // You might want to handle the error or log it in a more robust way based on your needs
+  // Refactored redirection logic with early return
+  if (authToken && isLoginPath) {
+    // Handle login routes with auth token first
+    return NextResponse.redirect(
+      roleType === 'admin'
+        ? new URL('/admin', request.url)
+        : new URL('/', request.url)
+    );
   }
+
+  if (!authToken && isAdminPath) {
+    // Enforce auth requirement for admin routes
+    return NextResponse.redirect(new URL('/login', request.url));
+  }
+
+  // Allow authorized admins to remain on admin routes
+  if (isAdminPath && roleType === 'admin') {
+    return NextResponse.next(); // Pass through if authorized admin on admin route
+  }
+
+  // Redirect non-admin users from admin routes
+  if (isAdminPath && roleType !== 'admin') {
+    return NextResponse.redirect(new URL('/', request.url)); // Redirect to a non-admin route
+  }
+
+  // No further logic needed if authorized for current path
+  return NextResponse.next(); // Pass through if authorized
 }
+
+const adminPaths = ['/admin', '/admin/(.*)'];
+const loginPaths = ['/login', '/signup'];
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - api (API routes)
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     */
-    '/((?!api|_next/static|_next/image|favicon.ico|nlogo.png).*)',
+    '/admin/:path*',
+    '/login',
+    '/forget-password',
+    '/signup',
+    '/profile',
   ],
 };

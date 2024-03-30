@@ -8,6 +8,7 @@ import ToastProvider from '@/providers/ToastProvider';
 import { getProfileData } from '@/modules/Admin/services/profile';
 import Header from '@/modules/core/components/Header';
 import Footer from '@/modules/core/components/Footer';
+import LayoutProvider from '@/providers/LayoutProvider';
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -37,18 +38,15 @@ const RootLayout = async ({
   children: React.ReactNode;
 }>) => {
   const profileData = await getProfileData();
-  console.log('🚀 ~ profileData:', profileData);
 
   return (
     <html lang="en" className={`${raleway.variable} ${poppins.variable} dark`}>
       <body>
         <AuthProvider data={profileData || {}}>
-          <ToastProvider />
-          <DataProvider>
-            <Header />
-            {children}
-            {/* <Footer /> */}
-          </DataProvider>
+          <LayoutProvider>
+            <ToastProvider />
+            <DataProvider>{children}</DataProvider>
+          </LayoutProvider>
         </AuthProvider>
       </body>
     </html>

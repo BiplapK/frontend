@@ -16,15 +16,22 @@ type Props = {};
 const Header = (props: Props) => {
   const [scroll, setScroll] = React.useState(false);
   const [showDropDown, setShowDropdown] = React.useState(false);
+  const [authData, setAuthData] = React.useState(false);
 
-  const { data } = useAuth();
   const router = useRouter();
+  const { data } = useAuth();
+  console.log('🚀 ~ Header ~ data:', data);
+  console.log('🚀 ~ Header ~ data:', Boolean(data));
 
   React.useEffect(() => {
     window.addEventListener('scroll', () => {
       setScroll(window.scrollY > 100);
     });
   });
+
+  React.useEffect(() => {
+    setAuthData;
+  }, []);
   return (
     <header
       className={clsx(
@@ -85,24 +92,32 @@ const Header = (props: Props) => {
               ))}
             </ul>
             <div className="grid md:hidden xl:grid  grid-cols-2 gap-2">
-              <Button
-                variant="warning-outline"
-                rounded="full"
-                size="sm"
-                className="font-bold font-raleway"
-                onClick={() => router.push('/login')}
-              >
-                Login In
-              </Button>
-              <Button
-                variant="warning-outline"
-                rounded="full"
-                size="sm"
-                className="font-bold font-raleway"
-                onClick={() => router.push('/signup')}
-              >
-                Sign Up
-              </Button>
+              {!Boolean(data) ? (
+                <>
+                  <Button
+                    variant="warning-outline"
+                    rounded="full"
+                    size="sm"
+                    className="font-bold font-raleway"
+                    onClick={() => router.push('/login')}
+                  >
+                    Login In
+                  </Button>
+                  <Button
+                    variant="warning-outline"
+                    rounded="full"
+                    size="sm"
+                    className="font-bold font-raleway"
+                    onClick={() => router.push('/signup')}
+                  >
+                    Sign Up
+                  </Button>
+                </>
+              ) : data?.role === 'user' ? (
+                'profile'
+              ) : (
+                <Link href={'/admin'}>Dashboard</Link>
+              )}
             </div>
           </div>
         </div>
