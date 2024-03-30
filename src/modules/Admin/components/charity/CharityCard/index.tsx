@@ -2,8 +2,10 @@ import React from 'react';
 
 import Image from 'next/image';
 import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 
 import Button from '@/modules/core/components/Button';
+import Link from 'next/link';
 
 type Props = {
   title: string;
@@ -14,6 +16,7 @@ type Props = {
   description: string;
   charity_id: string;
   handleDeleteCharity: (charity_id: string) => void;
+  handleEditCharity?: (charity_id: string) => void;
 };
 
 const CharityCard = ({
@@ -25,7 +28,9 @@ const CharityCard = ({
   description,
   charity_id,
   handleDeleteCharity,
+  handleEditCharity,
 }: Props) => {
+  const router = usePathname();
   return (
     <div className={clsx('flex justify-start items-start mb-4 mx-2 ')}>
       <div className="w-[250px] max-h-[220px]  h-full flex justify-center items-center relative">
@@ -54,12 +59,12 @@ const CharityCard = ({
         </div>
         <div className="flex justify-end items-center gap-2">
           <Button
-            //   onClick={() => handleDeleteContact(inquiry_id)}
+            // onClick={() => handleEditCharity(charity_id)}
             size="sm"
             className="text-white-100"
             variant="danger"
           >
-            Edit
+            <Link href={`/admin/charity/${charity_id}`}> Edit</Link>
           </Button>
           <Button
             onClick={() => handleDeleteCharity(charity_id)}

@@ -20,8 +20,8 @@ const Header = (props: Props) => {
 
   const router = useRouter();
   const { data } = useAuth();
-  console.log('🚀 ~ Header ~ data:', data);
-  console.log('🚀 ~ Header ~ data:', Boolean(data));
+  // console.log('🚀 ~ Header ~ data:', data);
+  // console.log('🚀 ~ Header ~ data:', Boolean(data));
 
   React.useEffect(() => {
     window.addEventListener('scroll', () => {
