@@ -18,7 +18,6 @@ export const getProfileData = async () => {
   const response = await executeFetch('/auth/profile', {
     headers,
     next: {
-      revalidate: coreAPiRevalidation,
       tags: ['profile'],
     },
   });
