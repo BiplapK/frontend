@@ -8,7 +8,7 @@ import BackgroundBanner from '../BackgroundBanner';
 const Footer = () => {
   return (
     <>
-      <BackgroundBanner
+      {/* <BackgroundBanner
         bannerTitle="Donate Now"
         title="Support Us and Change the Course of a Child’s Life Today!"
         description="Lorem ipsum dolor sit amet consectetur adipisicing
@@ -27,7 +27,7 @@ const Footer = () => {
         }}
         contentColor="text-white-100"
         hasButton
-      />
+      /> */}
 
       <footer className="p-[30px] bg-white-100 container mx-auto">
         <div className="grid grid-cols-2">

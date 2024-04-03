@@ -19,6 +19,10 @@ export function middleware(request: NextRequest) {
     );
   }
 
+  if (!authToken && pathname.includes('/profile')) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
   if (!authToken && isAdminPath) {
     // Enforce auth requirement for admin routes
     return NextResponse.redirect(new URL('/login', request.url));
@@ -40,6 +44,7 @@ export function middleware(request: NextRequest) {
 
 const adminPaths = ['/admin', '/admin/(.*)'];
 const loginPaths = ['/login', '/signup'];
+const authPath = ['/profile', '/profile/(.*)', '/donation/add-donation'];
 
 export const config = {
   matcher: [

@@ -101,7 +101,7 @@ const Header = (props: Props) => {
                     className="font-bold font-raleway"
                     onClick={() => router.push('/login')}
                   >
-                    Login In
+                    Log In
                   </Button>
                   <Button
                     variant="primary-outline"
@@ -114,7 +114,7 @@ const Header = (props: Props) => {
                   </Button>
                 </>
               ) : data?.role === 'user' ? (
-                'profile'
+                <Link href={'/profile'}>Profile</Link>
               ) : (
                 <Link href={'/admin'}>Dashboard</Link>
               )}

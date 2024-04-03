@@ -7,16 +7,24 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'email' | 'password' | 'file';
   error?: string;
   ref?: any;
+  customLabel?: string;
 }
 
-const Input = ({ name, type = 'text', error, ref, ...rest }: InputProps) => {
+const Input = ({
+  name,
+  type = 'text',
+  error,
+  customLabel,
+  ref,
+  ...rest
+}: InputProps) => {
   return (
-    <div className="mb-4">
+    <div className="mb-2">
       <label
         className="block  text-black-200 text-md font-medium mb-2 capitalize"
         htmlFor={name}
       >
-        {name}
+        {Boolean(customLabel) ? customLabel : name}
       </label>
       <input
         className={clsx(
@@ -29,15 +37,7 @@ const Input = ({ name, type = 'text', error, ref, ...rest }: InputProps) => {
         ref={ref}
         {...rest}
       />
-      {error && <p className="text-red-200 text-md p-1 italic">{error}</p>}
-
-      {/* <input
-        type="text"
-        id="first_name"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="John"
-        required
-      /> */}
+      {error && <p className="text-red-200 text-md pt-1 italic">{error}</p>}
     </div>
   );
 };

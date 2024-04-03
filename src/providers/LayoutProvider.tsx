@@ -27,7 +27,7 @@ const LayoutProvider = ({ children }: Props) => {
   ) : (
     <>
       <Header />
-      {children}
+      <div className="h-auto">{children}</div>
       <Footer />
     </>
   );

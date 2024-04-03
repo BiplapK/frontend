@@ -7,17 +7,16 @@ export type OptionType = {
   value: string;
 };
 
-export type OptionsType = Array<OptionType>;
-
 type IProps = {
   label?: string;
   name?: string;
-  options: OptionsType;
-  onChange?: (e: string) => void;
+  options: Array<OptionType>;
+  onChange?: (e: any) => void;
   required?: boolean;
   rounded?: boolean;
   className?: string;
   defaultValue?: string;
+  value: string;
   isOptionDisabled?: (option: any) => boolean;
 };
 
@@ -30,6 +29,7 @@ const Select = ({
   rounded = false,
   className,
   defaultValue,
+  value,
   isOptionDisabled,
   ...props
 }: IProps) => {
@@ -45,12 +45,10 @@ const Select = ({
       <ReactSelect
         options={options}
         name={name}
-        value={selectedValue || null}
+        value={selectedValue}
         className="select-container"
         classNamePrefix="select"
-        onChange={(e) => {
-          e && onChange && onChange(e.value);
-        }}
+        onChange={onChange}
         isOptionDisabled={isOptionDisabled}
         {...props}
       />

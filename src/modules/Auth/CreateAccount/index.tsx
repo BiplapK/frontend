@@ -10,6 +10,8 @@ import { toast } from 'react-toastify';
 // import ReactSelect from '@/modules/core/components/ReactSelect';
 import Input from '@/modules/core/components/Input';
 import Button from '@/modules/core/components/Button';
+import Select from '@/modules/core/components/Select';
+import TextArea from '@/modules/core/components/TextArea';
 
 import { signup } from '../Login/services/auth';
 
@@ -26,6 +28,7 @@ const CreateAccount = (props: Props) => {
       .min(8, 'Password is too short - should be 8 chars minimum.')
       .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
     username: Yup.string().required('No username provided.'),
+    gender: Yup.string(),
   });
 
   const formik = useFormik({
@@ -33,6 +36,7 @@ const CreateAccount = (props: Props) => {
       email: '',
       password: '',
       username: '',
+      gender: '',
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
@@ -47,6 +51,8 @@ const CreateAccount = (props: Props) => {
         });
     },
   });
+
+  console.log(formik);
   return (
     <div>
       <form
@@ -77,6 +83,15 @@ const CreateAccount = (props: Props) => {
           error={formik.errors.username}
           onBlur={formik.handleBlur}
         />
+
+        {/* <Select
+          options={options}
+          name="gender"
+          label="Gender"
+          onChange={(e) => formik.setFieldValue('gender', e.value)}
+          value={formik.values.gender}
+          // defaultValue={formik.values.gender}
+        /> */}
 
         <div className="flex items-center justify-between">
           <Button
