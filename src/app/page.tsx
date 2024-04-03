@@ -10,6 +10,7 @@ import Slider from '@/modules/core/components/Slider';
 import { sliderImageOne } from '@/staticData/homepage';
 import BackgroundBanner from '@/modules/core/components/BackgroundBanner';
 import Button from '@/modules/core/components/Button';
+import NoData from '@/modules/core/components/NoData';
 
 const Home = async () => {
   return (
@@ -21,6 +22,7 @@ const Home = async () => {
       <Aim />
       <Counter />
       <Slider data={sliderImageOne} />
+      {/* <NoData /> */}
       <Banner />
       {/* <Footer /> */}
     </div>

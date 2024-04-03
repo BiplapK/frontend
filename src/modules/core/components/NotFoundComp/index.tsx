@@ -1,6 +1,7 @@
+import React from 'react';
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React from 'react';
 
 type Props = {};
 
@@ -10,16 +11,16 @@ const NotFoundComp = (props: Props) => {
     router.push('/');
   };
   return (
-    <div className="h-screen flex m-auto">
+    <div className="h-[84vh] flex m-auto">
       <div className="m-auto">
         <div className="text-center">
-          <h1 className="mb-4 text-8xl  font-bold text-red-500">404</h1>
-          <h3 className="mb-4 text-2l font-semibold text-gray-600">
+          <h1 className="mb-4 text-8xl  font-bold text-red-300">404</h1>
+          <h3 className="mb-4 text-2xl font-semibold text-red-200">
             Oops! Looks like you&apos;re lost.
           </h3>
           <div className="animate-bounce">
             <svg
-              className="mx-auto h-16 w-16 text-red-500"
+              className="mx-auto h-16 w-16 text-red-200"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -32,11 +33,11 @@ const NotFoundComp = (props: Props) => {
               ></path>
             </svg>
           </div>
-          <p className="mt-4 text-gray-600">
+          <p className="mt-4 ">
             Let&apos;s get you back{' '}
             <div
               onClick={handleRoute}
-              className="text-blue-500 cursor-pointer hover:underline"
+              className="font-bold text-blue-300 cursor-pointer hover:underline"
             >
               Home
             </div>

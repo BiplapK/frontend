@@ -13,6 +13,7 @@ import { addCharity, updateCharity } from '@/modules/Admin/services/charity';
 import charityRevalidate from '@/modules/Admin/components/charity/CharityCard/action';
 import { CharityType } from '@/modules/Admin/types/charity.types';
 import { publicAxios } from '@/modules/core/utils/axios';
+import TextArea from '@/modules/core/components/TextArea';
 
 type Props = {
   data?: CharityType;
@@ -75,9 +76,9 @@ const AddCharity = ({ data, edit = false, id }: Props) => {
           <Link href={'/admin/charity'}>Go Back to Charity page</Link>
         </Button>
       </div>
-      <div className="py-5 w-5/6">
+      <div className="py-5 w-3/6">
         <form onSubmit={formik.handleSubmit}>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             <Input
               name="title"
               type="text"
@@ -86,14 +87,7 @@ const AddCharity = ({ data, edit = false, id }: Props) => {
               error={formik.errors.title}
               onBlur={formik.handleBlur}
             />
-            <Input
-              name="description"
-              type="text"
-              value={formik.values.description}
-              onChange={formik.handleChange}
-              error={formik.errors.description}
-              onBlur={formik.handleBlur}
-            />
+
             {!edit && (
               <Input
                 name="image_url"
@@ -112,6 +106,13 @@ const AddCharity = ({ data, edit = false, id }: Props) => {
               value={formik.values.charity_amount}
               onChange={formik.handleChange}
               error={formik.errors.charity_amount}
+              onBlur={formik.handleBlur}
+            />
+            <TextArea
+              name="description"
+              value={formik.values.description}
+              onChange={formik.handleChange}
+              error={formik.errors.description}
               onBlur={formik.handleBlur}
             />
           </div>
