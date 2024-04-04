@@ -16,8 +16,10 @@ type IProps = {
   rounded?: boolean;
   className?: string;
   defaultValue?: string;
-  value: string;
+  value: string | null;
   isOptionDisabled?: (option: any) => boolean;
+  customLabel?: string;
+  error?: any;
 };
 
 const Select = ({
@@ -30,18 +32,22 @@ const Select = ({
   className,
   defaultValue,
   value,
+  customLabel,
+  error,
   isOptionDisabled,
   ...props
 }: IProps) => {
   const selectedValue = options.find((el) => el.value === defaultValue);
 
   return (
-    <div>
-      {label && (
-        <label>
-          {label} {required && '*'}
-        </label>
-      )}
+    <div className="mb-2">
+      <label
+        className="block  text-black-200 text-base font-medium mb-2 capitalize"
+        htmlFor={name}
+      >
+        {Boolean(customLabel) ? customLabel : name}
+      </label>
+
       <ReactSelect
         options={options}
         name={name}
@@ -50,8 +56,10 @@ const Select = ({
         classNamePrefix="select"
         onChange={onChange}
         isOptionDisabled={isOptionDisabled}
+        isClearable
         {...props}
       />
+      {error && <p className="text-red-200 text-md pt-1 italic">{error}</p>}
     </div>
   );
 };
