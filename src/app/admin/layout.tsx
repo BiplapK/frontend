@@ -3,11 +3,11 @@ import React, { PropsWithChildren } from 'react';
 import AdminTemplate from '@/modules/Admin/components/AdminLayout';
 
 const adminNavgation = [
-  {
-    title: 'Dashboard',
-    path: '/admin',
-    parent: 'admin',
-  },
+  // {
+  //   title: 'Dashboard',
+  //   path: '/admin',
+  //   parent: 'admin',
+  // },
   {
     title: 'Charity',
     path: '/admin/charity',
@@ -19,13 +19,13 @@ const adminNavgation = [
     parent: 'admin',
   },
   {
-    title: 'Notice',
-    path: '/admin/notice',
+    title: 'Donation',
+    path: '/admin/donation',
     parent: 'admin',
   },
   {
-    title: 'Message',
-    path: '/admin/message',
+    title: 'Testimonial',
+    path: '/admin/testimonial',
     parent: 'admin',
   },
 ];

@@ -1,9 +1,7 @@
 import 'server-only';
 import { cookies } from 'next/headers';
-import axios from 'axios';
 
 import { executeFetch } from '@/lib/execute-fetch';
-import { publicAxios } from '@/modules/core/utils/axios';
 
 import { ContactDataType } from '../types/profile.types';
 

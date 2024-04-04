@@ -18,7 +18,7 @@ const Donation = ({ data }: Props) => {
           <div className="flex justify-center flex-col items-center mt-4">
             <p>
               There is not data in this page{' '}
-              <Link className="text-red-200" href={'/chariy'}>
+              <Link className="text-red-200" href={'/charity'}>
                 Add Donation
               </Link>
             </p>

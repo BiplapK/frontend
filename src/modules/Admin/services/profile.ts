@@ -1,6 +1,5 @@
 import { cookies } from 'next/headers';
 
-import { coreAPiRevalidation } from '@/constants/revalidationa';
 import { executeFetch } from '@/lib/execute-fetch';
 
 import { ProfileDataType } from '../types/profile.types';

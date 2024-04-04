@@ -6,16 +6,23 @@ interface InputProps extends React.InputHTMLAttributes<HTMLTextAreaElement> {
   name: string;
   error?: string;
   rows?: number;
+  customLabel?: string;
 }
 
-const TextArea = ({ name, error, rows = 4, ...rest }: InputProps) => {
+const TextArea = ({
+  name,
+  error,
+  customLabel,
+  rows = 4,
+  ...rest
+}: InputProps) => {
   return (
     <div className="mb-4">
       <label
         className="block  text-black-200 text-md font-medium mb-2 capitalize"
         htmlFor={name}
       >
-        {name}
+        {customLabel ? customLabel : name}
       </label>
       <textarea
         name=""
