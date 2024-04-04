@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Link from 'next/link';
-
 import Contact from '@/modules/Admin/pages/contact';
 import { getContactData } from '@/modules/Admin/services/contact';
 
