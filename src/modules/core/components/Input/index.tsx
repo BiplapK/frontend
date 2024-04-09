@@ -5,7 +5,7 @@ import clsx from 'clsx';
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   type: 'text' | 'email' | 'password' | 'file';
-  error?: string;
+  error?: any;
   ref?: any;
   customLabel?: string;
 }
