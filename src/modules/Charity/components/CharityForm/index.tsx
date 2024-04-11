@@ -12,6 +12,8 @@ import Select from '@/modules/core/components/Select';
 import useAuth from '@/modules/core/hooks/useAuth';
 import useQuote from '@/modules/core/hooks/useQuote';
 import UnAuthorizedUser from '@/modules/core/components/UnAuthorizedUser';
+import { addCharity } from '../../services/charity';
+import { toast } from 'react-toastify';
 
 type Props = {
   data: any;
@@ -43,6 +45,14 @@ const CharityForm = ({ data, option }: Props) => {
     validationSchema,
     onSubmit: (values, { resetForm }) => {
       console.log('🚀 ~ CharityForm ~ values:', values);
+      addCharity(values)
+        .then((res) => {
+          console.log(res);
+          toast.success('Added');
+        })
+        .catch((error) => {
+          toast.error('error');
+        });
       resetForm();
     },
   });

@@ -17,7 +17,17 @@ import { login } from './services/auth';
 type Props = {};
 
 const Login = (props: Props) => {
+  const [tokenData, setTokenData] = React.useState<{
+    role: string;
+    token: string;
+  } | null>(null);
+  // console.log('🚀 ~ Login ~ tokenData:', tokenData);
   const router = useRouter();
+
+  React.useLayoutEffect(() => {
+    setCookie('admin-key', (tokenData && tokenData.token) || '', 30);
+    setCookie('role', (tokenData && tokenData?.role) || '', 30);
+  }, [tokenData]);
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .email('Please enter a valid email')
@@ -37,8 +47,7 @@ const Login = (props: Props) => {
     onSubmit: (values, { resetForm }) => {
       login(values)
         .then((res) => {
-          setCookie('admin-key', res && res.data.token, 30);
-          setCookie('role', res && res.data.role, 30);
+          setTokenData(res && res.data);
           toast.success(res.data.message);
           profileRevalidate();
           router.push('/');
