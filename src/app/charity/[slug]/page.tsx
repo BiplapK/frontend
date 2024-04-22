@@ -11,8 +11,8 @@ type Props = {
 const CharityDetailPage = async ({ params }: { params: { slug: string } }) => {
   const data = await getCharityById(params.slug);
   const { data: charityData } = data;
-  console.log('🚀 ~ CharityDetailPage ~ charityData:', charityData);
-  console.log('🚀 ~ CharityDetailPage ~ slug:', params.slug);
+  // console.log('🚀 ~ CharityDetailPage ~ charityData:', charityData);
+  // console.log('🚀 ~ CharityDetailPage ~ slug:', params.slug);
   return <CharityDetail data={charityData} />;
 };
 
