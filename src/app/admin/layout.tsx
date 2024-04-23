@@ -1,5 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 
+import { Metadata } from 'next';
+
 import AdminTemplate from '@/modules/Admin/components/AdminLayout';
 
 const adminNavgation = [
@@ -29,6 +31,11 @@ const adminNavgation = [
     parent: 'admin',
   },
 ];
+export const metadata: Metadata = {
+  title: 'Admin |Charity Application',
+  description:
+    'This is the Description of Charity App Built by 6th Sem students of LBEF',
+};
 const AdminLayout = ({ children }: PropsWithChildren) => {
   return <AdminTemplate navData={adminNavgation}>{children}</AdminTemplate>;
 };

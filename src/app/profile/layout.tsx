@@ -1,8 +1,15 @@
 import React from 'react';
 
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 type Props = {};
+
+export const metadata: Metadata = {
+  title: 'Profile |Charity Application',
+  description:
+    'This is the Description of Charity App Built by 6th Sem students of LBEF',
+};
 
 const profileNavData = [
   { url: '/profile', title: 'Profile' },

@@ -5,6 +5,6 @@ export const getAllCharitySelect = async () => {
   return await publicAxios.get('/charity/all');
 };
 
-export const addCharity = async ({ payload }: any) => {
-  return await publicAxios.post('/charity/add', payload);
+export const addDonation = async ({ payload }: any) => {
+  return await publicAxios.post('/donation/add', payload);
 };

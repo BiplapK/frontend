@@ -10,25 +10,26 @@ import Button from '../Button';
 type Props = {};
 
 const Aim = (props: Props) => {
-  const data = [1, 2, 3, 4];
   return (
-    <section className="container mx-auto">
-      <h2 className="text-left text-black-100 text-6xl font-poppins font-semibold ">
-        What we do
-      </h2>
-      <div className="flex justify-end w-full pb-10">
-        <div className="w-5/12">
-          <h4 className="text-xl font-bold pb-5 text-left">
-            We plan and support amazing projects that help change the lives of
-            disadvantaged children and young people from across different
-            regions of the world.
-          </h4>
-          <Link
-            href={'/'}
-            className="pt-6 uppercase text-orange-100 hover:text-orange-300"
-          >
-            Read more
-          </Link>
+    <section className="container mx-auto py-4">
+      <div className="flex justify-between items-start">
+        <h2 className="text-left text-black-100 text-6xl font-poppins font-semibold w-full ">
+          What we do
+        </h2>
+        <div className="flex justify-end  pb-10">
+          <div className="">
+            <h4 className="text-xl font-bold pb-5 text-left">
+              We plan and support amazing projects that help change the lives of
+              disadvantaged children and young people from across different
+              regions of the world.
+            </h4>
+            <Link
+              href={'/'}
+              className="pt-6 uppercase text-orange-100 hover:text-orange-300"
+            >
+              Read more
+            </Link>
+          </div>
         </div>
       </div>
       <div className="py-4">
