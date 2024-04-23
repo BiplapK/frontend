@@ -1,9 +1,10 @@
 'use client';
 import React from 'react';
 
+import Image from 'next/image';
+
 import BackgroundBanner from '../core/components/BackgroundBanner';
 import useQuote from '../core/hooks/useQuote';
-import Image from 'next/image';
 
 type Props = {};
 
@@ -22,7 +23,7 @@ const AboutUs = (props: Props) => {
         }}
       />
       <section className="container mx-auto">
-        <div className="py-4 grid grid-cols-5 gap-3">
+        <div className="py-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
           {data.map((item, i) => (
             <div className="max-w-sm rounded overflow-hidden shadow-lg" key={i}>
               <Image

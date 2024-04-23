@@ -1,41 +1,31 @@
 import React from 'react';
 
-import { getProfileData } from '@/modules/Admin/services/profile';
-import { getProductData } from '@/modules/core/services/getProduct';
 import Aim from '@/modules/core/components/Aim';
 import Counter from '@/modules/core/components/Counter';
 import Banner from '@/modules/core/components/Banner';
-import Footer from '@/modules/core/components/Footer';
 import Slider from '@/modules/core/components/Slider';
 import { sliderImageOne } from '@/staticData/homepage';
 import BackgroundBanner from '@/modules/core/components/BackgroundBanner';
-import Button from '@/modules/core/components/Button';
-import NoData from '@/modules/core/components/NoData';
 
 const Home = async () => {
   return (
     <div className="">
-      <h2 className="text-4xl text-orange bg-light">Lorem, ipsum dolor.</h2>
-      {/* <ProfileComp />
-      <h2>Hello Nabraj</h2> */}
-
+      <BackgroundBanner
+        bannerTitle={''}
+        contentColor="text-white-100"
+        height="h-[85vh]"
+        background={{
+          background: 'url("/student-learning.jpeg")',
+          backgroundSize: 'cover',
+          repeat: 'no-repeat',
+        }}
+      />
       <Aim />
       <Counter />
       <Slider data={sliderImageOne} />
-      {/* <NoData /> */}
       <Banner />
-      {/* <Footer /> */}
     </div>
   );
 };
 
 export default Home;
-
-// const data = async () => {
-//   const res = await fetch("http:localhost:8000/product", { cache: "no-store" });
-
-//   if (!res.ok) {
-//     throw new Error("Failed to fetch data");
-//   }
-//   return res.json();
-// };

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { toast } from 'react-toastify';
 
 import Input from '@/modules/core/components/Input';
 import TextArea from '@/modules/core/components/TextArea';
@@ -12,8 +13,8 @@ import Select from '@/modules/core/components/Select';
 import useAuth from '@/modules/core/hooks/useAuth';
 import useQuote from '@/modules/core/hooks/useQuote';
 import UnAuthorizedUser from '@/modules/core/components/UnAuthorizedUser';
-import { addCharity } from '../../services/charity';
-import { toast } from 'react-toastify';
+
+import { addDonation } from '../../services/charity';
 
 type Props = {
   data: any;
@@ -23,8 +24,6 @@ type Props = {
 const CharityForm = ({ data, option }: Props) => {
   const { data: profileData } = useAuth();
   const { quote } = useQuote();
-  console.log('🚀 ~ CharityForm ~ quote:', quote);
-  console.log('🚀 ~ CharityForm ~ profileData:', profileData);
 
   const validationSchema = Yup.object().shape({
     user_id: Yup.string(),
@@ -44,8 +43,7 @@ const CharityForm = ({ data, option }: Props) => {
     },
     validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log('🚀 ~ CharityForm ~ values:', values);
-      addCharity(values)
+      addDonation(values)
         .then((res) => {
           console.log(res);
           toast.success('Added');

@@ -11,6 +11,7 @@ type IProps = {
   contentColor?: string;
   hasButton?: boolean;
   buttonComponent?: React.ReactNode;
+  height?: string;
   background?: {
     [name: string]: string;
   };
@@ -27,6 +28,7 @@ const BackgroundBanner = (props: IProps) => {
     buttonComponent,
     background,
     children,
+    height = 'h-[60vh]',
   } = props;
 
   const backgroundStyles: React.CSSProperties = {
@@ -34,7 +36,7 @@ const BackgroundBanner = (props: IProps) => {
   };
   return (
     <section
-      className={clsx(' h-[60vh] flex justify-center items-center')}
+      className={clsx('flex justify-center items-center', height)}
       style={backgroundStyles}
     >
       <div className="flex flex-col w-6/12">
