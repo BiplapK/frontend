@@ -8,8 +8,10 @@ import Image from 'next/image';
 
 import useAuth from '@/modules/core/hooks/useAuth';
 import { navigationLinks } from '@/staticData/navbar';
+import { publicAxios } from '@/modules/core/utils/axios';
 
 import Button from '../../Button';
+import { toast } from 'react-toastify';
 
 type Props = {};
 
@@ -32,6 +34,17 @@ const Navbar = (props: Props) => {
   React.useEffect(() => {
     setAuthData;
   }, []);
+
+  const handleSms = () => {
+    publicAxios
+      .get('/send-email')
+      .then((res) => {
+        toast.success(res?.data);
+      })
+      .catch((error) => {
+        toast.error('something went wrong');
+      });
+  };
   return (
     <header
       className={clsx(
@@ -82,7 +95,7 @@ const Navbar = (props: Props) => {
               showDropDown ? 'block' : 'hidden'
             )}
           >
-            <ul className=" md:col-span-3 lg:col-span-3 xl:col-span-2 inline-block lg:flex gap-3 font-poppins font-normal text-[14px]">
+            <ul className=" md:col-span-3 lg:col-span-3 xl:col-span-2 inline-block lg:flex gap-3 font-poppins font-normal text-[14px] items-center">
               {navigationLinks.map((item) => (
                 <li key={item.path} className="cursor-pointer py-2 px-2 md:p-0">
                   <Link href={item.path} className="px-2">
@@ -90,6 +103,16 @@ const Navbar = (props: Props) => {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Button
+                  variant="success-outline"
+                  rounded="full"
+                  size="sm"
+                  onClick={handleSms}
+                >
+                  Send Sms
+                </Button>
+              </li>
             </ul>
             <div className="grid md:hidden xl:grid  grid-cols-2 gap-2">
               {!Boolean(data) ? (
